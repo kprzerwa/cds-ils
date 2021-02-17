@@ -42,7 +42,6 @@ jobs:
       DB: ${{ matrix.db-service }}
       SEARCH: ${{ matrix.search-service }}
       EXTRAS: all,${{ matrix.DB_EXTRAS }},${{ matrix.SEARCH_EXTRAS }}
-      ELASTICSEARCH_VERSION: 7.1.1
     steps:
       - name: Install ldap dependencies
         run: |
@@ -77,5 +76,7 @@ jobs:
           docker-compose --version
 
       - name: Run tests
+        env:
+          ELASTICSEARCH_VERSION: 7.1.1
         run: |
           ./run-tests.sh
