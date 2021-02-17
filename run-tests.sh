@@ -19,6 +19,7 @@ function cleanup() {
 trap cleanup EXIT
 python -m check_manifest --ignore ".*-requirements.txt"
 python -m sphinx.cmd.build -qnNW docs docs/_build/html
+export ELASTICSEARCH_VERSION=7.1.1
 eval "$(docker-services-cli up --db ${DB:-postgresql} --search ${SEARCH:-elasticsearch} --cache ${CACHE:-redis} --env)"
 curl localhost:9200
 python -m pytest
