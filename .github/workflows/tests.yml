@@ -79,4 +79,7 @@ jobs:
         env:
           ELASTICSEARCH_VERSION: 7.1.1
         run: |
+          echo $ELASTICSEARCH_VERSION
+          pip show docker-services-cli
           ./run-tests.sh
+          echo $ELASTICSEARCH_VERSION
